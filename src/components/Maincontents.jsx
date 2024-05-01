@@ -12,6 +12,8 @@ const Maincontents = ((props) => {
 
     const [contentArea, setContentArea] = useState(<Home />);
 
+    console.log(contentArea, "Render 1 content area use state.");
+
     const handleClickBtn = (event) => {
         const idElement = event.target.id;
 
@@ -26,6 +28,8 @@ const Maincontents = ((props) => {
             setContentArea(<Completed />);
         }
     }
+
+    console.log(contentArea, "Render 2 content area useState.")
 
     useEffect(() => {
 

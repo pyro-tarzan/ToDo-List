@@ -6,10 +6,12 @@ import Navbar from "./Navbar";
 import Maincontents from "./Maincontents";
 
 const App = (() => {
+  console.log ("Inside App");
 
   const [isClick, setIsClick] = useState(false);
 
   function onMenuClick(){
+    console.log("on menu click");
     setIsClick(!isClick);
   }
 

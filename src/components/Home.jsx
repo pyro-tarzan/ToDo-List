@@ -5,7 +5,7 @@ import axios from "axios";
 import Todoform from "./Todoform";
 import Datacard from "./Datacard";
 
-const Home = (() => {
+const Home = () => {
 
      // Get the Form Content by Clicking Add Button
      const [formCard, setFormCard] = useState();
@@ -86,6 +86,6 @@ const Home = (() => {
              </div>
          </div>
      );
-});
+}
 
 export default Home;
