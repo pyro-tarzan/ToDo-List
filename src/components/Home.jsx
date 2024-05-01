@@ -13,8 +13,6 @@ const Home = () => {
      const [cards, setCards] = useState([]);
      const [loading, setLoading] = useState(true);
  
-     console.log("Home component loaded ", cards.length);
- 
      useEffect(() => {
          
          const fetchData = async() => {
@@ -40,10 +38,8 @@ const Home = () => {
          );
      }
  
-     console.log("Rendering Home Componenet");
- 
      // Click Submit Button
-     function handleSubmit(formData){
+     function addCard(formData){
          
          const newCard = {
              id: Date.now(),
@@ -58,7 +54,7 @@ const Home = () => {
          setFormCard(
              <Todoform 
              onCloseButton={clickCloseButton}
-             onSubmitButton={handleSubmit}
+             handleAddCard={addCard}
              />
          );
          setisClick(true);

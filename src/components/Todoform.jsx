@@ -1,6 +1,7 @@
 import React, {useState} from "react";
+import axios from "axios";
 
-function Todoform({onCloseButton, onSubmitButton}){
+function Todoform({onCloseButton, handleAddCard}){
 
     const [formData, setFormData] = useState({
         title: "",
@@ -14,7 +15,17 @@ function Todoform({onCloseButton, onSubmitButton}){
 
     function handleSubmitButton(event){
         event.preventDefault();
-        onSubmitButton(formData);
+        console.log("Form Submitted: ", formData);
+
+        //to POST in the server.
+        const url = "http://localhost:3001/todos/add/data";
+
+        axios.post(url, formData)
+        .then(res => console.log(res.data))
+        .catch(err => console.error("Error: ", err));
+
+        //To display in the Cards field.
+        handleAddCard(formData);
         setFormData({title: "", description: "", date: ""});
     }   
 
@@ -25,7 +36,7 @@ function Todoform({onCloseButton, onSubmitButton}){
                     <i className="fa-solid fa-x"></i>
                 </button>
             </div>
-            <form action="/todos/add/data" onSubmit={handleSubmitButton} className="form" method="POST">
+            <form onSubmit={handleSubmitButton} className="form">
                 <input type="text" className="input text" name="title" onChange={handleChange} placeholder="Title" />
                 <textarea type="text" className="input text" onChange={handleChange} rows="6" cols="30" name="description" placeholder="Description" />
                 <input type="date" className="input date" name="date" onChange={handleChange} />

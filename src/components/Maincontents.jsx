@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 
 // Import React Components
 import Sidepanel from "./Sidepanel";
@@ -8,17 +8,12 @@ import Completed from "./Completed";
 
 const Maincontents = ((props) => {
 
-    console.log("! Time Render");
-
     const [contentArea, setContentArea] = useState(<Home />);
-
-    console.log(contentArea, "Render 1 content area use state.");
 
     const handleClickBtn = (event) => {
         const idElement = event.target.id;
 
         if(idElement === "home"){
-            console.log ("home event is clicked");
             setContentArea(<Home />)
         }
         else if(idElement === "inprogress"){
@@ -28,12 +23,6 @@ const Maincontents = ((props) => {
             setContentArea(<Completed />);
         }
     }
-
-    console.log(contentArea, "Render 2 content area useState.")
-
-    useEffect(() => {
-
-    }, []);
 
     return (
         <div className="main-content">
