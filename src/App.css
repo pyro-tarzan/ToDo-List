@@ -143,10 +143,13 @@ body{
   /* grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   grid-auto-flow: row; */
   flex-wrap: wrap;
-  gap: 20px;
-  padding: 20px; 
+  padding: 10px; 
   overflow-y: scroll;
   scrollbar-width: none;
+}
+
+.cards-form > *{
+  margin: 10px;
 }
 
 /* A Particular Card */
@@ -262,24 +265,55 @@ body{
 .title-date{
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-weight: 500;
-  font-size: 14pt;
+  font-size: 18px;
   text-transform: capitalize;
   border-bottom: 1px solid rgba(0, 0, 0, 0.096);
 }
 
 .description{
-  font-size: 12pt;
+  font-size: 16px;
   text-align: justify;
   flex-grow: 2;
   border-bottom: 1px solid rgba(0, 0, 0, 0.096);
+}
+
+.categories-delete{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 12pt;
 }
 
 .categories{
   display: flex;
   flex-direction: row;
   gap: 10px;
+}
+
+.change-btn{
+  border: transparent;
+  padding: 2px 5px;
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: .3em;
+  color: rgba(255, 255, 255, .6);
+}
+
+.delete-card{
+  border-radius: 3em;
+  padding: 4px 6px;
+  border: none;
+  cursor: pointer;
   font-size: 12pt;
+  color: rgb(116, 0, 0);
+  outline: none;
+  background-color: transparent;
+  transition: all .2s ease-in;
+  &:hover{
+    transform: scale(1.3);
+  }
 }
 
 .date{
