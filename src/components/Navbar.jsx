@@ -1,13 +1,16 @@
 import React from "react";
 
-function Navbar(props){
+function Navbar(){
     return(
         <div className="nav-bar">
             <div className="nav-contents">
-                <button className="menu-btn" onClick={props.menuFunction}>
-                    <i className="fa-solid fa-bars"></i>
-                </button>
                 <span className="title">ToDo List</span>
+                <div className="user-menu">
+                    <span className="username">Hello, User</span>
+                    <button className="user-icon">
+                        <i className="fa-regular fa-user"></i>
+                    </button>
+                </div>
             </div>
         </div>
     );

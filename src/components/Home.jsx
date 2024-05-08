@@ -12,6 +12,7 @@ const Home = () => {
      const [isClick, setisClick] = useState(false);
      const [cards, setCards] = useState([]);
      const [loading, setLoading] = useState(true);
+     const [message, setMessage] = useState("");
  
      useEffect(() => {
          
@@ -19,12 +20,15 @@ const Home = () => {
  
              try{
                  const response = await axios.get("http://localhost:3001/todos/home");
+                 console.log("fetching data", response.data);
                  setCards(response.data);
                  setLoading(false);
              }
              catch(err){
-                 console.error("Error fetching users: ", err);
-                 setLoading(false);
+                console.error("Error fetching users: ", err);
+                console.log(err.message);
+                setLoading(false);
+                setMessage("Something went wrong.");
              }
          };
  
@@ -34,7 +38,16 @@ const Home = () => {
  
      if(loading){
          return(
-             <div>Loading...</div>
+            <div id="fountainG">
+	            <div id="fountainG_1" className="fountainG"></div>
+	            <div id="fountainG_2" className="fountainG"></div>
+	            <div id="fountainG_3" className="fountainG"></div>
+	            <div id="fountainG_4" className="fountainG"></div>
+	            <div id="fountainG_5" className="fountainG"></div>
+	            <div id="fountainG_6" className="fountainG"></div>
+	            <div id="fountainG_7" className="fountainG"></div>
+	            <div id="fountainG_8" className="fountainG"></div>
+            </div>
          );
      }
  
@@ -45,6 +58,8 @@ const Home = () => {
              id: Date.now(),
              ...formData
          };
+
+         console.log("new Value", newCard);
          setCards([...cards, newCard]);
          setisClick(false);
      }
@@ -75,11 +90,15 @@ const Home = () => {
                      <i className="fa-solid fa-plus"></i>
                  </button>
              </div>
- 
-             <div className="cards-form">
-                 {isClick && clickCloseButton ? formCard : null}
-                 {cards.map(card => <Datacard key={card.id} {...card} /> )}
-             </div>
+
+            {message ? <div className="warning popup">
+                <p>{message}</p>
+            </div>
+            :
+            <div className="cards-form">
+                {isClick && clickCloseButton ? formCard : null}
+                {cards.length ? cards.map(card => <Datacard key={card.id} {...card} /> ) : <div className="popup empty">Data is Empty</div> }
+            </div> }
          </div>
      );
 }

@@ -6,7 +6,7 @@ function Todoform({onCloseButton, handleAddCard}){
     const [formData, setFormData] = useState({
         title: "",
         description: "",
-        date: ""
+        due_date: ""
     });
 
     function handleChange(event){
@@ -16,6 +16,7 @@ function Todoform({onCloseButton, handleAddCard}){
     function handleSubmitButton(event){
         event.preventDefault();
         console.log("Form Submitted: ", formData);
+        console.log("Date: ", formData.due_date);
 
         //to POST in the server.
         const url = "http://localhost:3001/todos/add/data";
@@ -26,7 +27,7 @@ function Todoform({onCloseButton, handleAddCard}){
 
         //To display in the Cards field.
         handleAddCard(formData);
-        setFormData({title: "", description: "", date: ""});
+        setFormData({title: "", description: "", due_date: ""});
     }   
 
     return (
@@ -37,9 +38,9 @@ function Todoform({onCloseButton, handleAddCard}){
                 </button>
             </div>
             <form onSubmit={handleSubmitButton} className="form">
-                <input type="text" className="input text" name="title" onChange={handleChange} placeholder="Title" />
-                <textarea type="text" className="input text" onChange={handleChange} rows="6" cols="30" name="description" placeholder="Description" />
-                <input type="date" className="input date" name="date" onChange={handleChange} />
+                <input type="text" className="input text" name="title" onChange={handleChange} placeholder="Title" required />
+                <textarea type="text" className="input text" onChange={handleChange} rows="6" cols="30" name="description" placeholder="Description" required />
+                <input type="date" className="input date" name="due_date" onChange={handleChange} />
                 <button type="submit" className="submit-btn">Submit</button>
             </form>
         </div>
